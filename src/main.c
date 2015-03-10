@@ -3,7 +3,9 @@
 // Used for drawing hands
 #include "main.h"
 // Allows the use of colors such as "GColorMidnightGreen"
+#ifdef PBL_COLOR
 #include "gcolor_definitions.h"
+  #endif
 
 // Main window
 static Window *s_main_window;
@@ -89,7 +91,9 @@ static void window_load(Window *s_main_window) {
   s_background_bitmap = gbitmap_create_with_resource(RESOURCE_ID_BACKGROUND);
   s_background_layer = bitmap_layer_create(bounds);
   bitmap_layer_set_bitmap(s_background_layer, s_background_bitmap);
-  bitmap_layer_set_compositing_mode(s_background_layer, GCompOpSet);
+  #ifdef PBL_PLATFORM_BASALT
+    bitmap_layer_set_compositing_mode(s_background_layer, GCompOpSet);
+  #endif
   layer_add_child(window_layer, bitmap_layer_get_layer(s_background_layer));
 
   // Draws the hands. Then apply it the window layer
