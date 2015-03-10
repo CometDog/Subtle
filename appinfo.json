@@ -1,0 +1,29 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "James Downs",
+    "longName": "Subtle",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/subtlebw.png",
+                "name": "BACKGROUND",
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "Subtle",
+    "targetPlatforms": [
+        "basalt"
+    ],
+    "uuid": "19c3419a-2f00-4143-808d-0f2d62f45b42",
+    "versionCode": 1,
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
