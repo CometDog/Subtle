@@ -18,6 +18,7 @@
     "sdkVersion": "3",
     "shortName": "Subtle",
     "targetPlatforms": [
+        "aplite",
         "basalt"
     ],
     "uuid": "19c3419a-2f00-4143-808d-0f2d62f45b42",

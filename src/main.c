@@ -48,6 +48,13 @@ static void hands_update_proc(Layer *layer, GContext *ctx) {
   gpath_rotate_to(s_hour_arrow, (TRIG_MAX_ANGLE * (((t->tm_hour % 12) * 6) + (t->tm_min / 10))) / (12 * 6));
   gpath_draw_filled(ctx, s_hour_arrow);
   // Draw outline if black and white
+  
+  #ifdef PBL_COLOR
+  #else
+  graphics_context_set_stroke_color(ctx, GColorBlack);
+  gpath_draw_outline(ctx, s_hour_arrow);
+  gpath_draw_outline(ctx, s_minute_arrow);
+  #endif
 
   // Minute hand
   // Define the path that the minute hand will follow
@@ -58,7 +65,7 @@ static void hands_update_proc(Layer *layer, GContext *ctx) {
   #ifdef PBL_COLOR
     graphics_context_set_stroke_color(ctx, GColorFolly);
   #else
-    graphics_context_set_fill_color(ctx, GColorWhite);
+    graphics_context_set_stroke_color(ctx, GColorWhite);
   #endif
   graphics_draw_line(ctx, second_hand, center);
   
@@ -66,8 +73,10 @@ static void hands_update_proc(Layer *layer, GContext *ctx) {
   graphics_context_set_fill_color(ctx, GColorWhite);
   graphics_fill_rect(ctx, GRect(bounds.size.w / 2 - 2, bounds.size.h / 2 - 2, 5, 5), 0, GCornerNone);
   
+  #ifdef PBL_COLOR
   graphics_context_set_fill_color(ctx, GColorFolly);
   graphics_fill_rect(ctx, GRect(bounds.size.w / 2 - 1, bounds.size.h / 2 - 1, 3, 3), 0, GCornerNone);
+  #endif
 }
 
 // Update hands every second when called
